@@ -29,10 +29,10 @@ public class NoticeDAOTest extends MyAbstractTest {
 		
 	}
 	
-	@Test
+	//@Test
 	public void getListTest()throws Exception{
-		List<NoticeDTO> ar = noticeDAO.getList();
-		assertNotEquals(0, ar.size());;
+		//List<NoticeDTO> ar = noticeDAO.getList();
+		//assertNotEquals(0, ar.size());;
 		
 	}
 	
