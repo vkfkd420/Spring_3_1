@@ -23,7 +23,7 @@
 		
 		<div class="form-check">
 			<label class="form-check-label"> <input type="checkbox"
-				 value="1" name="c1" class="ch">동의
+				 value="1" name="c1" class="check">동의
 			</label>
 		</div>
 		<div class="jumbotron">
@@ -34,7 +34,7 @@
 		
 		<div class="form-check">
 			<label class="form-check-label"> <input type="checkbox"
-				 value="1" name="c1" class="ch">동의
+				 value="1" name="c1" class="check">동의
 			</label>
 		</div>
 		<div class="jumbotron">
@@ -45,7 +45,7 @@
 		
 		<div class="form-check">
 			<label class="form-check-label"> <input type="checkbox"
-				 value="1" name="c1" class="ch">동의
+				 value="1" name="c1" class="check">동의
 			</label>
 		</div>
 		<div class="jumbotron">
@@ -56,7 +56,7 @@
 		
 		<div class="form-check">
 			<label class="form-check-label"> <input type="checkbox"
-				 value="1" name="c1" class="ch">동의
+				 value="1" name="c1" class="check">동의
 			</label>
 		</div>
 		<div class="jumbotron">
