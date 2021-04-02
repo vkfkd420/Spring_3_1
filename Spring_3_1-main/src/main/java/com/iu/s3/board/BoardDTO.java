@@ -1,8 +1,8 @@
-package com.iu.s3.notice;
+package com.iu.s3.board;
 
 import java.sql.Date;
 
-public class NoticeDTO {
+public class BoardDTO {
 	
 	private long num;
 	private String title;
@@ -10,7 +10,6 @@ public class NoticeDTO {
 	private String contents;
 	private Date regDate;
 	private long hit;
-	
 	public long getNum() {
 		return num;
 	}
