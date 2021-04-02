@@ -1,9 +1,11 @@
 package com.iu.s3.notice;
 
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,9 +24,22 @@ public class NoticeController {
 	public void setInsert()throws Exception{}
 	
 	@RequestMapping(value = "noticeInsert", method = RequestMethod.POST)
-	public String setInsert(NoticeDTO noticeDTO)throws Exception{
-		int result = noticeService.setInsert(noticeDTO);
-		return "redirect:./noticeList";
+	public String setInsert(NoticeDTO noticeDTO,Model model )throws Exception{
+		//int result = noticeService.setInsert(noticeDTO);
+		Random random = new Random();
+		int result = random.nextInt(2);
+		
+		String message="등록실패";
+		String path="./noticeInsert";
+		
+		
+		if(result>0) {
+			message="등록성공";
+			path="./noticeList";
+		}
+		model.addAttribute("msg",message);
+		model.addAttribute("path",path);
+		return "common/commonResult";
 	}
 	
 	@RequestMapping("noticeList")

@@ -64,7 +64,7 @@
 			<p>Bootstrap is the most popular HTML, CSS...</p>
 		</div>
 		
-		<button class="btn btn-dange" onclick="check()">JOIN</button>
+		<button class="btn btn-dange" id="btn">JOIN</button>
 		<script type="text/javascript" src="../resources/js/memberJoinCheck.js"></script>
 		
 	</div>
