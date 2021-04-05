@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.iu.s3.board.BoardDAO;
 import com.iu.s3.board.BoardDTO;
 import com.iu.s3.util.Pager;
+import com.iu.s3.util.Pager_backUp;
 
 @Repository
 public class NoticeDAO implements BoardDAO {
@@ -59,7 +60,7 @@ public class NoticeDAO implements BoardDAO {
 	@Override
 	public int setDelete(BoardDTO boardDTO) throws Exception {
 		
-		return sqlSession.update(NAMESPACE+"setUpdate", boardDTO);
+		return sqlSession.delete(NAMESPACE+"setDelete", boardDTO);
 
 	}
 	

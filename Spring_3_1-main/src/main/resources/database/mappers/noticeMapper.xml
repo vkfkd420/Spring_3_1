@@ -5,6 +5,11 @@
 
 <mapper namespace="com.iu.s3.board.notice.NoticeDAO">
 
+	<delete id="setDelete" parameterType="Int">
+	 delete from notice where num =#{num}
+	
+	</delete>
+
 
 
 	<select id="getSelect" parameterType="BoardDTO" resultType= "NoticeDTO">

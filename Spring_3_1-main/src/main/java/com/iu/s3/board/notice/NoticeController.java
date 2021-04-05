@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.s3.board.BoardDTO;
 import com.iu.s3.util.Pager;
+import com.iu.s3.util.Pager_backUp;
 
 @Controller
 @RequestMapping("/notice/**")
@@ -20,6 +21,29 @@ public class NoticeController {
 	
 	@Autowired
 	private NoticeService noticeService;
+	
+	@GetMapping
+	public ModelAndView setDelete(BoardDTO boardDTO,ModelAndView modelAndView)throws Exception{
+		
+		ModelAndView mv = new ModelAndView();
+		
+		noticeService.setDelete(boardDTO);
+		
+		String message ="삭제되었습니다.";
+		
+		
+		mv.addObject("msg", message);
+		mv.addObject("path", "./noticeList");
+
+////		mv.addObject("board", "notice");
+//		mv.setViewName("board/boardDelete");
+		mv.setViewName("common/commonResult");
+		return mv;
+			
+		
+		
+		
+	}
 	
 	@GetMapping("noticeSelect")
 	public ModelAndView getSelect(BoardDTO boardDTO)throws Exception{
@@ -31,16 +55,16 @@ public class NoticeController {
 		return mv;
 		
 	}
-	@GetMapping("noticeUpdate")
-	public long setUpdate(BoardDTO boardDTO)throws Exception{
-		ModelAndView mv = new ModelAndView();
-		boardDTO = noticeService.setUpdate(boardDTO);
-		mv.addObject("dto",boardDTO);
-		mv.addObject("board","notice");
-		mv.setViewName("board/boardUpdate");
-		
-		return mv;
-	}
+//	@GetMapping("noticeUpdate")
+//	public long setUpdate(BoardDTO boardDTO)throws Exception{
+//		ModelAndView mv = new ModelAndView();
+//		boardDTO = noticeService.setUpdate(boardDTO);
+//		mv.addObject("dto",boardDTO);
+//		mv.addObject("board","notice");
+//		mv.setViewName("board/boardUpdate");
+//		
+//		return 0;
+//	}
 	
 	
 	

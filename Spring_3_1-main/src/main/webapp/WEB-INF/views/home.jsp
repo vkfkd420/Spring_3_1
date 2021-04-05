@@ -12,7 +12,7 @@
 <c:import url="./template/bootStrap.jsp"></c:import>
 
 <link rel="stylesheet" href="./resources/css/test.css">
-<title>Home</title>
+<title>Home6</title>
 </head>
 <body>
 	<c:import url="./template/header.jsp"></c:import>

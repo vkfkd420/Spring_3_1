@@ -3,6 +3,7 @@ package com.iu.s3.board;
 import java.util.List;
 
 import com.iu.s3.util.Pager;
+import com.iu.s3.util.Pager_backUp;
 
 public interface BoardDAO {
 	//상수, 추상메서드
@@ -19,7 +20,7 @@ public interface BoardDAO {
 	public BoardDTO getSelect(BoardDTO boardDTO)throws Exception;
 	
 	//hit update
-	public int setHitUpdate(BoardDTO baordDTO)throws Exception;
+	public int setHitUpdate(BoardDTO boardDTO)throws Exception;
 	
 	//글 추가
 	public int setInsert(BoardDTO boardDTO)throws Exception;
