@@ -52,7 +52,7 @@ public class NoticeService implements BoardService {
 	}
 
 
-
+	@Override
 	public List<BoardDTO> getList(Pager pager)throws Exception{
 	
 		// ---- startRow, lastRow ----

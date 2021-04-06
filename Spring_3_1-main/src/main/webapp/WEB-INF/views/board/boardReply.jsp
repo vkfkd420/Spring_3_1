@@ -14,7 +14,7 @@
  <div class="container">
  <h2>${board} Reply form</h2>
   <form id="frm" action="./${board}Reply" method="post">
-  <input type="hidden" name="num" value="${param.num}">
+  	<input type="hidden" name="num" value="${param.num}">
     <div class="form-group">
       <label for="writer">Writer:</label>
       <input type="text" readonly="readonly" value="${member.id}" class="form-control" id="writer" name="writer">
@@ -32,7 +32,6 @@
     <input type="submit" id="btn" value="WRITE" class="btn btn-primary">
   </form>
 </div>
-<script type="text/javascript" src="../resources/js/insertCheck.js"></script>
- 
+<!-- <script type="text/javascript" src="../resources/js/insertCheck.js"></script> -->
 </body>
 </html>

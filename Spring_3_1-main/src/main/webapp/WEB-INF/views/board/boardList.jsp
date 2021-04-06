@@ -11,9 +11,6 @@
 <body>
 <c:import url="../template/header.jsp"></c:import>
 <div class="container">
-		<div>
-			<img alt="" src="../images/iu1.jpeg">
-		</div>
 	
 			<h2>${board} List</h2>
 		
@@ -58,7 +55,7 @@
 	   
 	   <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
 	   
-	    <li class="page-item"><a class="page-link" href="./${board}eList?curPage=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a></li>
+	    <li class="page-item"><a class="page-link" href="./${board}List?curPage=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a></li>
 	   </c:forEach>
 	   
 	    <c:if test="${pager.next}">

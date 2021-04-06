@@ -16,9 +16,8 @@ public class QnaService implements BoardService {
 	@Autowired
 	private QnaDAO qnaDAO;
 	
-	
 	public int setReply(QnaDTO qnaDTO)throws Exception{
-	
+		//부모글의 ref, step, depth 조회
 		BoardDTO boardDTO = qnaDAO.getSelect(qnaDTO);
 		QnaDTO parent = (QnaDTO)boardDTO;
 		System.out.println(parent.getRef());
@@ -29,19 +28,22 @@ public class QnaService implements BoardService {
 		qnaDTO.setStep(parent.getStep()+1);
 		qnaDTO.setDepth(parent.getDepth()+1);
 		
-		qnaDAO.setReplyUpdate(parent);
-		int result = qnaDAO.setReply(qnaDTO);
+		int result = qnaDAO.setReplyUpdate(parent);
+		result = qnaDAO.setReply(qnaDTO);
 		
 		return result;
 	}
+	
 
 	@Override
 	public List<BoardDTO> getList(Pager pager) throws Exception {
-		// TODO Auto-generated method stub
+		//1. row
 		pager.makeRow();
 		
+		//2. pageing
 		long totalCount = qnaDAO.getTotalCount(pager);
 		pager.makeNum(totalCount);
+		
 		
 		return qnaDAO.getList(pager);
 	}
@@ -50,7 +52,6 @@ public class QnaService implements BoardService {
 	public BoardDTO getSelect(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
 		int result = qnaDAO.setHitUpdate(boardDTO);
-		System.out.println("aftrrr hit ");
 		return qnaDAO.getSelect(boardDTO);
 	}
 
@@ -63,13 +64,16 @@ public class QnaService implements BoardService {
 	@Override
 	public int setUpdate(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return 0;
+		return qnaDAO.setUpdate(boardDTO);
 	}
 
 	@Override
 	public int setDelete(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return 0;
+		return qnaDAO.setDelete(boardDTO);
 	}
+	
+	
+	
 	
 }

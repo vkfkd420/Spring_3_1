@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,26 +23,52 @@ public class NoticeController {
 	@Autowired
 	private NoticeService noticeService;
 	
-	@GetMapping
-	public ModelAndView setDelete(BoardDTO boardDTO,ModelAndView modelAndView)throws Exception{
+	@PostMapping
+	public ModelAndView setUpdate(BoardDTO boardDTO,ModelAndView mv) throws Exception{
+
+		int result = noticeService.setUpdate(boardDTO);
 		
+		if(result>0) {
+			mv.setViewName("redirect:./noticeList");
+		}else {
+			mv.addObject("msg","수정실패");
+			mv.addObject("past","./noticeList");
+			mv.setViewName("common/commonResult");
+		}
+		
+		return mv;
+	}
+	
+	@GetMapping
+	public ModelAndView setUpdate(BoardDTO boardDTO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		boardDTO = noticeService.getSelect(boardDTO);
+		
+		mv.addObject("dto",boardDTO);
+		mv.addObject("board","notice");
+		mv.setViewName("board/boardUpdate");
+
+		return mv;
+	}
+	
+	@PostMapping("noticeDelete")
+	public ModelAndView setDelete(BoardDTO boardDTO)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
-		noticeService.setDelete(boardDTO);
+		int result = noticeService.setDelete(boardDTO);
 		
-		String message ="삭제되었습니다.";
+		String message="삭제실패";
+		String path="./noticeList";
 		
+		if(result>0) {
+			message="삭제 성공";
+		}
 		
-		mv.addObject("msg", message);
-		mv.addObject("path", "./noticeList");
-
-////		mv.addObject("board", "notice");
-//		mv.setViewName("board/boardDelete");
+		mv.addObject("msg",message);
+		mv.addObject("path",path);
+		
 		mv.setViewName("common/commonResult");
 		return mv;
-			
-		
-		
 		
 	}
 	
@@ -55,18 +82,6 @@ public class NoticeController {
 		return mv;
 		
 	}
-//	@GetMapping("noticeUpdate")
-//	public long setUpdate(BoardDTO boardDTO)throws Exception{
-//		ModelAndView mv = new ModelAndView();
-//		boardDTO = noticeService.setUpdate(boardDTO);
-//		mv.addObject("dto",boardDTO);
-//		mv.addObject("board","notice");
-//		mv.setViewName("board/boardUpdate");
-//		
-//		return 0;
-//	}
-	
-	
 	
 	@RequestMapping("noticeInsert")
 	public ModelAndView setInsert()throws Exception{
