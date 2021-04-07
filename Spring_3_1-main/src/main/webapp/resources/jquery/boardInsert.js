@@ -1,13 +1,16 @@
 /**
  * 
  */
+
 $("#btn").click(function(){
 	alert("click");
 /*	let writer = $("#writer").val() != "";
-	let title = $("#title").val().length !=0;
-	let contents = $("#contents").val() !=0; */
+	let title = $("#title").val().length != 0;
+	let contents = $("#contents").val().length !=0 ;*/
 	
-	$(".myCheck").each(function(s1,s2){
+	let result = true;
+	
+	$(".myCheck").each(function(s1, s2){
 		console.log(s1);
 		console.log($(s2).val());
 		console.log($(this).val());
@@ -21,10 +24,8 @@ $("#btn").click(function(){
 	
 	if(result){
 		$("#frm").submit();
-		
-	}else{
+	}else {
 		alert("필수 요소를 입력하세요");
 	}
 	
-		
 });

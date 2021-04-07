@@ -4,8 +4,8 @@
 
 $("#all").click(function(){
 	let check = $("#all").prop("checked");
-	$(".check").prop("checked",check)
-})
+	$(".check").prop("checked", check);
+});
 
 $(".check").click(function(){
 	let result = true;
@@ -15,7 +15,9 @@ $(".check").click(function(){
 			result = false;
 		}
 	});
-	$("#all").prop("checked",result);
+	
+	$("#all").prop("checked", result);
+	
 });
 
 
@@ -23,7 +25,7 @@ $("#btn").click(function(){
 	let result = $("#all").prop("checked");
 	if(result){
 		location.href="./memberJoin";
-	}else{
-		alert("약관에 동의")
+	}else {
+		alert("약관에 동의");
 	}
-})
+});

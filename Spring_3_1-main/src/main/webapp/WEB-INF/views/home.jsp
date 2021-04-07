@@ -12,54 +12,70 @@
 <c:import url="./template/bootStrap.jsp"></c:import>
 
 <link rel="stylesheet" href="./resources/css/test.css">
-<title>Home6</title>
+<title>Home</title>
+<style type="text/css">
+	#d1 {
+		width: 200px;
+		height: 200px;
+		background-color: red;
+		overflow: hidden;
+	}
+	
+	#d2 {
+		width: 50px;
+		height: 50px;
+		background-color: yellow;
+		margin: 75px auto;
+	}
+</style>
 </head>
 <body>
-	<c:import url="./template/header.jsp"></c:import>
 	
-	<button class="b" >BUTTON </button>
-	<button id="btn" class="b">CLICK</button>
-	<button id="btn2" class="b">CLICK2</button>
-	<h1 id="t">version 3</h1>
-	<ol id="result">
-		<li>A</li>
-	</ol>
-	<select id="mon">
-	
-	</select>
+<c:import url="./template/header.jsp"></c:import>
 
-	<script type="text/javascript">
-		$("#btn2").click(function(){
-			$("#result").append('<a href="#"><li>go</li></a>');
-		})
+<button class="b">BUTTON</button>
+<button id="btn" class="b">CLICK</button>
+<button id="btn2" class="b">CLICK2</button>
+<h1 id="t">version 3</h1>
+<ol id="result">
+	<li>A</li>
+</ol>
+	
+<select id="mon">
+	
+</select>	
+
+<div id="d1">
+	<div id="d2"></div>
+</div>
+
+
+<script type="text/javascript">
+	$("#btn2").click(function() {
+		$("#result").prepend('<li>GO</li>');
+	});
+	
+	
 		
-		$("#btn").click(function(){
-			for(let i =1; i<13; i++){
-				$("#mon").appened("<option>"+i+"</option>");
-			}
-		})
-	</script>
-
-
-
- 	<!-- <script type="text/javascript">
-
-
-	let btn2 = document.getElementById("btn2");
+	for(let i=1;i<13;i++){
+		$("#mon").append("<option>"+i+"</option>");
+	}
 	
-	btn2.addEventListener("click",function(){
-		alert("btn2");
+	$("#d1").click(function(){
+		console.log("parent");
 	});
 	
-	$("#btn").click(function(){
-		alert("jquery");
+	$("#d2").click(function() {
+		console.log("child");
 	});
+		
+		
 	
-	btn.onclick=go;
-
 	
 </script>
- -->
+
+
+
 
 </body>
 </html>

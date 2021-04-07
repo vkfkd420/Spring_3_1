@@ -65,9 +65,9 @@
 	  
 	<div class="input-group mt-3 mb-3">
 	<form id="frm" action="./${board}List" class="form-inline">
-		<input type="hidden" name="curPage" value="1" id="curPage"></input>
+		<input type="hidden" name="curPage" value="1" id="curPage">
 	  <div class="input-group-prepend">
-	   <select class="form-control" name="kind" id="kind">
+	   <select class="form-control" name="kind" id="kind" >
 	    <option class="sel">Title</option>
 	    <option class="sel">Contents</option>
 	    <option class="sel">Writer</option>
@@ -82,25 +82,28 @@
   
   <a href="./${board}Insert" class="btn  btn-primary" role="button">Write</a>
 <script type="text/javascript">
+	let kind= '${pager.kind}';
+	$(".sel").each(function() {
+		let t = $(this).text();
+		if(t == kind){
+			$(this).prop("selected", true);
+		}
+	});
+	
 	$(".p").click(function () {
 		let curPage = $(this).attr("title");
 		$("#curPage").val(curPage);
-		let kind = '${pager.kind}';
 		let search= '${pager.search}';
+		$("#frm").submit();
 		
-		$(".sel").each(function(){
-			let t = $(this.)text();
-			if(t==kind){
-				$(this).prop("selected",true);
-			}
-		})
-			$("#frm").submit();
+		
 		/* $("#curPage").val(curPage);
 		$("#kind").val(kind);
 		$("#search").val(search);
-		$("#frm").submit();
-		 */
-		 location.href="./${board}List?curPage="+curPage+"&kind=${pager.kind}&search=${pager.search}";
+		$("#frm").submit(); */
+		
+		//location.href="./${board}List?curPage="+curPage+"&kind=${pager.kind}&search=${pager.search}";
+		
 	});
 </script>  
 </div>
