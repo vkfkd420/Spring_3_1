@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequestMapping("/member/**")
@@ -73,16 +74,22 @@ public class MemberController {
 	public void memberJoin()throws Exception{}
 	
 	@RequestMapping(value="memberJoin", method = RequestMethod.POST)
-	public String memberJoin(MemberDTO memberDTO, Model model)throws Exception{
-		int result = memberService.memberJoin(memberDTO);
+	public String memberJoin(MemberDTO memberDTO,MultipartFile avatar,HttpSession session, Model model)throws Exception{
+		System.out.println(avatar.getName());//파라미터명
+		System.out.println(avatar.getOriginalFilename());//upload 할때 파일명
+		System.out.println(avatar.getSize());//파일의 크기
+		System.out.println(avatar.isEmpty());//파일의 존재유무
 		
+		
+		//int result = memberService.memberJoin(memberDTO,avatar);
+		memberService.memberJoin(memberDTO,avatar,session);
 		String message = "회원가입 실패";
 		String path="./memberJoin";
-		
-		if(result>0) {
-			message ="회원 가입 성공";
-			path="../";
-		}
+//		
+//		if(result>0) {
+//			message ="회원 가입 성공";
+//			path="../";
+//		}
 		
 		model.addAttribute("msg", message);
 		model.addAttribute("path", path);
