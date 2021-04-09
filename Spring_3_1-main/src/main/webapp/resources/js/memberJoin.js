@@ -54,7 +54,7 @@ id.addEventListener("blur", function(){
 		message = "6글자 이상 입니다";
 		c = "r2";
 		idCheckResult=true;
-	}else{
+	}else {
 		idCheckResult=false;
 	}
 	
@@ -76,8 +76,25 @@ btn.addEventListener("click", function(){
 	//조건이 만족하면
 	if(idCheckResult && pwCheckResult && pwEqualResult && etcResult){
 		let frm = document.getElementById("frm");
-		frm.submit();
+		//frm.submit();
+		alert("회원가입 진행");
 	}else {
 		alert("필수 항목을 입력하세요");
 	}
+});
+
+// Id 중복 확인
+$("#id").blur(function(){
+	let id = $("#id").val();
+	$.get("./memberIdCheck?id="+id, function(result){
+		result = result.trim();
+		let str ="사용가능한 ID 입니다";
+		
+		if(result=='0'){
+			str ="중복 ID 입니다";
+		}
+		
+		$("#idCheckResult").html(str);
+		
+	});
 });

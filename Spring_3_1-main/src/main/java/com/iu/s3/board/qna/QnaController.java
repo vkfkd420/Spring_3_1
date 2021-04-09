@@ -16,7 +16,7 @@ import com.iu.s3.util.Pager_backUp;
 
 @Controller
 @RequestMapping("/qna/**")
-public class QnaControler {
+public class QnaController {
 	
 	@Autowired
 	private QnaService qnaService;
@@ -72,7 +72,7 @@ public class QnaControler {
 	@PostMapping("qnaInsert")
 	public ModelAndView setInsert(BoardDTO boardDTO, MultipartFile [] files)throws Exception{
 		ModelAndView mv = new ModelAndView(); 
-		int result = qnaService.setInsert(boardDTO,files);
+		int result = qnaService.setInsert(boardDTO, files);
 		mv.setViewName("redirect:./qnaList");
 		return mv;
 	}
@@ -98,15 +98,16 @@ public class QnaControler {
 	}
 	
 	@PostMapping
-	public ModelAndView setUpdate(BoardDTO boardDTO,ModelAndView mv) throws Exception{
-
-		int result = qnaService.setUpdate(boardDTO);
+	public ModelAndView setUpdate(BoardDTO boardDTO, ModelAndView mv)throws Exception{
 		
+		int result = qnaService.setUpdate(boardDTO);
 		if(result>0) {
+			//성공하면 리스트로 이동
 			mv.setViewName("redirect:./qnaList");
 		}else {
-			mv.addObject("msg","수정실패");
-			mv.addObject("past","./qnaList");
+			//실패하면 수정실패 , 리스트로 이동
+			mv.addObject("msg", "수정 실패");
+			mv.addObject("path", "./qnaList");
 			mv.setViewName("common/commonResult");
 		}
 		
@@ -117,16 +118,12 @@ public class QnaControler {
 	public ModelAndView setUpdate(BoardDTO boardDTO)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		boardDTO = qnaService.getSelect(boardDTO);
-		
-		mv.addObject("dto",boardDTO);
-		mv.addObject("board","qna");
+		mv.addObject("dto", boardDTO);
+		mv.addObject("board", "qna");
 		mv.setViewName("board/boardUpdate");
-
+		
 		return mv;
 	}
-	
-		
-	
 	
 	
 
