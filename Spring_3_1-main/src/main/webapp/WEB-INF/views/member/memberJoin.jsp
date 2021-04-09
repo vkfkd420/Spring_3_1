@@ -31,7 +31,7 @@
 			</div>
 			<div class="form-group">
 				<label for="pw">Password</label> 
-				<input type="password"	class="form-control" id="pw" name="pw">
+				<input type="password"	class="form-control" id="pw" name="pw1">
 				<h4 id="pwResult"></h4>
 				<!-- PW는 8글자 이상 -->
 			</div>
@@ -55,14 +55,13 @@
 				<label for="phone">Phone</label> 
 				<input type="text" class="form-control etc"	id="phone" name="phone">
 				<!-- 비어 있으면 X -->
-			</div>			
+			</div>		
 			
 			<div class="form-group">
 				<label for="avatar">Avatar</label> 
 				<input type="file" class="form-control etc"	id="avatar" name="avatar">
 				<!-- 비어 있으면 X -->
-			</div>			
-			
+			</div>	
 			
 			<input type="submit" id="btn" value="JOIN" class="btn btn-primary">
 			

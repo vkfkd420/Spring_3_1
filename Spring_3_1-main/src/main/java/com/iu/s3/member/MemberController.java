@@ -34,7 +34,7 @@ public class MemberController {
 	@RequestMapping("memberDelete")
 	public String memberDelete(HttpSession session)throws Exception{
 		MemberDTO memberDTO =(MemberDTO)session.getAttribute("member");
-		int result = memberService.memberDelete(memberDTO);
+		int result = memberService.memberDelete(memberDTO, session);
 		
 		session.invalidate();
 		
@@ -74,22 +74,21 @@ public class MemberController {
 	public void memberJoin()throws Exception{}
 	
 	@RequestMapping(value="memberJoin", method = RequestMethod.POST)
-	public String memberJoin(MemberDTO memberDTO,MultipartFile avatar,HttpSession session, Model model)throws Exception{
+	public String memberJoin(MemberDTO memberDTO, MultipartFile avatar,HttpSession session, Model model)throws Exception{
+		int result = memberService.memberJoin(memberDTO, avatar, session);
 		System.out.println(avatar.getName());//파라미터명
-		System.out.println(avatar.getOriginalFilename());//upload 할때 파일명
-		System.out.println(avatar.getSize());//파일의 크기
-		System.out.println(avatar.isEmpty());//파일의 존재유무
+		System.out.println(avatar.getOriginalFilename());//upload 할 때 파일명
+		System.out.println(avatar.getSize());//파일의 크기(byte)
+		System.out.println(avatar.isEmpty());//파일의 존재 유무
 		
 		
-		//int result = memberService.memberJoin(memberDTO,avatar);
-		memberService.memberJoin(memberDTO,avatar,session);
 		String message = "회원가입 실패";
 		String path="./memberJoin";
-//		
-//		if(result>0) {
-//			message ="회원 가입 성공";
-//			path="../";
-//		}
+		
+		if(result>0) {
+			message ="회원 가입 성공";
+			path="../";
+		}
 		
 		model.addAttribute("msg", message);
 		model.addAttribute("path", path);

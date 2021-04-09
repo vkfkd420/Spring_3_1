@@ -1,23 +1,23 @@
-package com.iu.s3.member;
+package com.iu.s3.board;
 
-public class MemberFileDTO {
+public class BoardFileDTO {
 	
+	private long fileNum;
 	private long num;
-	private String id;
 	private String fileName;
 	private String origineName;
 	
+	public long getFileNum() {
+		return fileNum;
+	}
+	public void setFileNum(long fileNum) {
+		this.fileNum = fileNum;
+	}
 	public long getNum() {
 		return num;
 	}
 	public void setNum(long num) {
 		this.num = num;
-	}
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
 	}
 	public String getFileName() {
 		return fileName;
