@@ -18,20 +18,17 @@ public class CommentsController {
 	private CommentsService commentsService;
 	
 	@PostMapping("commentsDelete")
-	public void commentsDelete(int []num)throws Exception{
+	public void commentsDelete(int [] commentNum)throws Exception{
 		System.out.println("Start");
-		for(int n:num) {
-			System.out.println(n);
-		}
-		System.out.println("Finish");
+		
+		System.out.println("finish");
 	}
 	
 	@PostMapping("commentsInsert")
 	public ModelAndView setInsert(CommentsDTO commentsDTO)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int result = commentsService.setInsert(commentsDTO);
-		
-		mv.addObject("result",result);
+		mv.addObject("result", result);
 		mv.setViewName("common/ajaxResult");
 		return mv;
 	}

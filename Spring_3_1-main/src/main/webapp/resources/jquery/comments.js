@@ -3,14 +3,10 @@
  */
 let num = $("#comments").attr("title");
 getList();
-function getList(){
-$.get("../comments/commentsList?num="+num,function(data){
-	console.log(data);
-	$("#comments").html(data.trim());
-});
-}
-$("#comments").on("click", "#remove",function(){
-	const ar = [];
+
+
+$("#comments").on("click", "#remove", function(){
+	const ar = []; //빈 배열
 	$(".del").each(function(){
 		let ch = $(this).prop("checked");
 		if(ch){
@@ -19,22 +15,26 @@ $("#comments").on("click", "#remove",function(){
 	});
 	
 	$.ajax({
-		type:"GET",
-		url:"../comments/commentsDelete",
-		traditional: true,
-		data:{num:ar},
+		type: "POST",
+		url: "../comments/commentsDelete",
+		traditional: true, //배열은 전송
+		data:{commentNum:ar},
 		success:function(data){
 			alert(data);
 		}
-		
 	});
-	
-	$.post("../comments/commentsDelete?",{num:ar},function(data){
-		alert(data);
-	});
-	
-})
 
+	
+	
+});
+
+
+function getList(){
+	$.get("../comments/commentsList?num="+num,function(data){
+		console.log(data);
+		$("#comments").html(data.trim());
+	});
+}
 
 $("#write").click(function(){
 	let writer = $("#writer").val();
@@ -45,7 +45,6 @@ $("#write").click(function(){
 		num:num,
 		writer:writer,
 		contents:contents
-		
 	}, 
 	function(data){
 		data = data.trim();
@@ -54,7 +53,7 @@ $("#write").click(function(){
 			$("#writer").val('');
 			$("#contents").val('');
 			getList();
-		}else{
+		}else {
 			alert('등록 실패');
 		}
 	});
