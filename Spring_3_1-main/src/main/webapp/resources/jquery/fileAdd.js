@@ -2,8 +2,8 @@
  * 
  */
 
-let count=0;
-
+let count=$("#files").attr("title");
+alert(count);
 $("#add").click(function(){
 	if(count < 5){
 		let contents = $("#sample").html();
@@ -14,11 +14,17 @@ $("#add").click(function(){
 	}
 });
 
+
 $("#del").click(function(){
 	$("#files").empty();
 });
 
-$("#files").on("click",".delete",function(){
+//이벤트 전달(위임)
+$("#files").on("click", ".delete", function(){
 	$(this).parent().remove();
 	count--;
-})
+});
+
+
+
+
